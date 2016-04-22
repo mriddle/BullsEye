@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var currentValue = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +23,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showAlert() {
-        let alert = UIAlertController(title: "Hello, World!",
-            message: "This is my first app!",
+        let alert = UIAlertController(title: "Happy Friday",
+            message: "Ferocia is more than great",
             preferredStyle: .Alert)
         
         let action = UIAlertAction(title: "Awesome", style: .Default, handler: nil)
@@ -32,5 +34,8 @@ class ViewController: UIViewController {
         presentViewController(alert, animated: true, completion: nil)
     }
 
+    @IBAction func sliderMoved(slider: UISlider) {
+        currentValue = lroundf(slider.value)
+    }
 }
 
