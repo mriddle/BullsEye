@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ViewController: UIViewController {
     
@@ -39,6 +40,7 @@ class ViewController: UIViewController {
     
     super.viewDidLoad()
     startNewGame()
+    updateLabels()
   }
 
   override func didReceiveMemoryWarning() {
@@ -76,11 +78,22 @@ class ViewController: UIViewController {
     currentValue = lroundf(slider.value)
   }
   
-  @IBAction func startNewGame() {
-    round = 0
-    score = 0
-    startNewRound()
+  @IBAction func startOver() {
+    startNewGame()
     updateLabels()
+    
+    let transition = CATransition()
+    transition.type = kCATransitionFade
+    transition.duration = 1
+    transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+    
+    view.layer.addAnimation(transition, forKey: nil)
+  }
+  
+  func startNewGame() {
+      round = 0
+      score = 0
+      startNewRound()
   }
   
   func startNewRound() {
